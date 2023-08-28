@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MSIB Latihan 2</title>
+    <style>
+      body {
+        font-family: "Times New Roman", Times, serif;
+        text-shadow: 2px 1px rgba(0, 0, 0, 0.699);
+        color: white;
+        background-color: rgba(0, 0, 0, 0.699);
+        font-size: larger;
+        font-weight: bold;
+      }
+      h1 {
+        text-align: center;
+      }
+      .container {
+        max-width: 600px;
+        
+        margin: 100px auto;
+        padding: 25px 20px;
+        background-color: gray;
+        border-radius: 3px;
+        box-shadow: 5px 5px rgba(255, 255, 255, 0.699);
+      }
+      label,
+      input,
+      select {
+        width: 100%;
+        padding: 5px;
+        font-weight: bold;
+      }
+      button {
+        padding: 10px 20px;
+        font-weight: bold;
+        background-color: green;
+        border-radius: 3px;
+        color: white;
+      }
+      table {
+        margin-top: 20px;
+        border: 2px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        color: black;
+        text-shadow: none;
+      }
+
+      th {
+        background-color: cadetblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Menghitung Nilai Rata-Rata</h1>
+
+      <form action="#" name="formData" onsubmit="insertData(); reset();return false">
+        <label for="nama">Nama </label><br />
+        <br />
+        <input type="text" id="nama" name="nama" required /><br />
+        <br />
+
+        <label for="mata-kuliah">Mata Kuliah</label><br /><br />
+        <input type="text" id="mata-kuliah" name="mata-kuliah" required /><br /><br />
+
+        <label for="grade">Grade</label><br /><br />
+        <select name="grade" id="grade" required>
+          <option value="">Grade</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+        </select>
+        <br />
+        <br />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <table border="1" border-color="black" width="100%" id="data">
+        <tr>
+          <th>Nama</thwi>
+          <th>Mata Kuliah</th>
+          <th>Grade</th>
+          <th>Nilai Rata-Rata</th>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <script>
+    function insertData() {
+      form = document.getElementById("formData");
+      const nama = document.getElementById("nama").value;
+      const matkul = document.getElementById("mata-kuliah").value;
+      const pilihangrade = document.getElementById("grade").value;
+      const grade = {
+        A: 4,
+        B: 3,
+        C: 2,
+        D: 1,
+        E: 0,
+      };
+      console.log(nama);
+      console.log(matkul);
+      console.log(pilihangrade);
+
+      if (pilihangrade in grade) {
+        const tabel = document.getElementById("data");
+        const graderata = grade[pilihangrade];
+
+        const row = tabel.insertRow(-1);
+
+        row.insertCell(0).innerHTML = nama;
+        row.insertCell(1).innerHTML = matkul;
+        row.insertCell(2).innerHTML = pilihangrade;
+        row.insertCell(3).innerHTML = graderata.toFixed(2);
+      }
+    }
+  </script>
+</html>
